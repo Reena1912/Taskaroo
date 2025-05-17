@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // DOM Elements
     const taskInput = document.getElementById('task-input');
     const addTaskBtn = document.getElementById('add-task-btn');
     const taskList = document.getElementById('task-list');
@@ -11,18 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     const exportBtn = document.getElementById('export-btn');
 
-    // State
+
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     let currentPriority = 'normal';
     let currentFilter = 'all';
     let currentTheme = localStorage.getItem('theme') || 'light';
 
-    // Initialize
+  
     setTheme(currentTheme);
     renderTasks();
     updateStats();
 
-    // Event Listeners
+    
     addTaskBtn.addEventListener('click', addTask);
     taskInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') addTask();
@@ -48,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     themeToggle.addEventListener('click', toggleTheme);
     exportBtn.addEventListener('click', exportTasks);
 
-    // Functions
+
     function addTask() {
         const text = taskInput.value.trim();
         
@@ -171,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         linkElement.setAttribute('download', exportFileDefaultName);
         linkElement.click();
         
-        // Visual feedback
+        
         exportBtn.innerHTML = '<i class="fas fa-check"></i> Exported';
         setTimeout(() => {
             exportBtn.innerHTML = '<i class="fas fa-file-export"></i>';
